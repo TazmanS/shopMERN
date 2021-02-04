@@ -2,91 +2,79 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const BaseToggle = ({color = '#2196F3', textLeft = '', textRight = ''}) => {
+const BaseToggle = ({color = '#2196F3', options = []}) => {
   return (
-    <BaseToggleDiv >
-      <p>{textLeft}</p>
-      <Label data-color={color}>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
+    <BaseToggleDiv data-color={color}>
+      <p>{options[0].title}</p>
+        <label className="switch" >
+          <input type="checkbox" onChange={(e) => console.log(e.target.checked)}/>
+          <span className="slider">
+            <span className="round"></span>
+          </span>
         </label>
-      </Label>
-      <p>{textRight}</p>
+      <p>{options[1].title}</p>
     </BaseToggleDiv>
   )
 }
 
 BaseToggle.propTypes = {
   color: PropTypes.string,
-  textLeft: PropTypes.string,
-  textRight: PropTypes.string
+  options: PropTypes.array
 }
 
 
 const BaseToggleDiv = styled.div`
-  
-`
 
-const Label = styled.div`
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
+& {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
+.switch{
+  width: 26px;
+  height: 10px;
+  display: block;
+  position: relative;
+  margin-top: 3px;
+}
 
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+p{
+  margin: 0;
+  padding: 0 10px;
+}
 
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+input {
+  width: 0px;
+  height: 0px;
+  opacity: 0;
+}
 
-  input:checked + .slider {
-    background-color: ${(props) => props['data-color']}; // изменение цвета
-  }
+.switch .slider{
+  background-color: #bdbdbd;
+  position: absolute;
+  width: 26px;
+  height: 10px;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+}
 
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
+.round{
+  width: 14px;
+  height: 14px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: -2px;
+  left: -4px;
+  border-radius: 50%;
+  transition: .4s;
+}
 
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
+input:checked + .slider .round {
+  left: 16px;
+}
 
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
-  }
 `
 
 export default BaseToggle

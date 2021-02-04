@@ -9,8 +9,24 @@ export default BaseToggleStory
 
 
 export const DefaultView = () => {
+
+  const options = [
+    {
+      title: 'Светлая',
+      value: 'light'
+    },
+    {
+      title: 'Темная',
+      value: 'dark'
+    }
+  ]
+  
+
+
   return (
-    <BaseToggle  />
+    <div style={{background: '#F8F8F8', width: '100%', height: '50px' }}>
+      <BaseToggle options={options} />
+    </div>
   )
 }
  
