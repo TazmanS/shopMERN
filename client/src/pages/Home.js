@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../sections/Header'
 
 const Home = () => {
   return (
     <div>
-      <div>NAVBAR</div>
+      <Header />
       <div></div>
     </div>
   )
