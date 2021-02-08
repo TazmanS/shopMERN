@@ -1,27 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
-const BaseToggle = ({color = '#2196F3', options = []}) => {
+interface BaseToggle {
+  color: string,
+  options: {title: string, value: string}[]
+}
+
+const BaseToggle:React.FC<BaseToggle> = ({color = '#2196F3', options}) => {
   return (
     <BaseToggleDiv data-color={color}>
-      <p>{options[0].title}</p>
+      {options && <p>{options[0].title}</p>}
         <label className="switch" >
           <input type="checkbox" onChange={(e) => console.log(e.target.checked)}/>
           <span className="slider">
             <span className="round"></span>
           </span>
         </label>
-      <p>{options[1].title}</p>
+        {options && <p>{options[1].title}</p>}
     </BaseToggleDiv>
   )
 }
-
-BaseToggle.propTypes = {
-  color: PropTypes.string,
-  options: PropTypes.array
-}
-
 
 const BaseToggleDiv = styled.div`
 
