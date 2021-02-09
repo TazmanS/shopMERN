@@ -1,33 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface BaseToggle {
-  color: string,
-  options: {title: string, value: string}[]
+interface BaseToggleInterface {
+  color?: string,
+  options?: {title: string, value: string}[]
 }
 
-const BaseToggle:React.FC<BaseToggle> = ({color = '#2196F3', options}) => {
+const BaseToggle:React.FC<BaseToggleInterface> = ({color = '#2196F3', options}) => {
   return (
     <BaseToggleDiv data-color={color}>
-      {options && <p>{options[0].title}</p>}
+      {options ? <p>{options[0].title}</p> : null}
         <label className="switch" >
           <input type="checkbox" onChange={(e) => console.log(e.target.checked)}/>
           <span className="slider">
             <span className="round"></span>
           </span>
         </label>
-        {options && <p>{options[1].title}</p>}
+        {options ? <p>{options[1].title}</p> : null}
     </BaseToggleDiv>
   )
 }
 
 const BaseToggleDiv = styled.div`
 
-& {
+
   display: flex;
   justify-content: center;
   align-items: center;
-}
+
 
 .switch{
   width: 26px;

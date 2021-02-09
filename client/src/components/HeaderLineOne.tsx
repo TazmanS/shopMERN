@@ -1,13 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
+import BaseToggle from './BaseToggle'
 
 const HeaderLineOne = () => {
+  const optionsOne = [
+    {
+      title: 'Светлая',
+      value: 'light'
+    },
+    {
+      title: 'Тёмная',
+      value: 'dark'
+    }
+  ]
+
+  const optionsTwo = [
+    {
+      title: 'RU',
+      value: 'ru'
+    },
+    {
+      title: 'UA',
+      value: 'ua'
+    }
+  ]
+
   return (
     <Div>
       <div>
         Выпадашка
       </div>
-      <div>переключатель</div>
+      <BaseToggle options={optionsOne} />
       <ul>
         <li>Блог</li>
         <li>Fishka</li>
@@ -18,7 +41,7 @@ const HeaderLineOne = () => {
         <li>Гарантия / Возврат</li>
         <li>Контакты</li>
       </ul>
-      <div>переключатель</div>
+      <BaseToggle options={optionsTwo} />
     </Div>
   )
 }

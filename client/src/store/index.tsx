@@ -8,11 +8,11 @@ export const store = createStore(reducer, applyMiddleware(
   reduxThunk
 ))
 
-interface Store {
+interface StoreInterface {
   children: React.ReactNode
 }
 
-const Store:React.FC<Store> = ({children}) => {
+const Store:React.FC<StoreInterface> = ({children}) => {
   return( 
     <Provider store={store}>{children}</Provider>
   )
