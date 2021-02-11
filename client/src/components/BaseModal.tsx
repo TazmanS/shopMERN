@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { ReactEventHandler } from 'react'
 import styled from 'styled-components'
+import InputDropDown from './InputDropDown'
 
 interface BaseModalInterface {
   show: boolean,
@@ -59,7 +60,64 @@ const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
       value: 'dnepr',
       id: 10
     },
-  ].splice(0, 6).map(city => {
+  ]
+
+  const [currentCity, setCurrentCity] = React.useState('Николаев')
+  const [search, setSearch] = React.useState('')
+  // const [cities, setSities] = React.useState([
+  //   {
+  //     title: 'Киев',
+  //     value: 'kiev',
+  //     id: 1
+  //   },
+  //   {
+  //     title: 'Одесса',
+  //     value: 'odessa',
+  //     id: 2
+  //   },
+  //   {
+  //     title: 'Николаев',
+  //     value: 'nikolaev',
+  //     id: 3
+  //   },
+  //   {
+  //     title: 'Харьков',
+  //     value: 'kharkov',
+  //     id: 4
+  //   },
+  //   {
+  //     title: 'Запорожье',
+  //     value: 'zaporojie',
+  //     id: 5
+  //   },
+  //   {
+  //     title: 'Львов',
+  //     value: 'lviv',
+  //     id: 6
+  //   },
+  //   {
+  //     title: 'Суммы',
+  //     value: 'symmi',
+  //     id: 7
+  //   },
+  //   {
+  //     title: 'Херсон',
+  //     value: 'kherson',
+  //     id: 8
+  //   },
+  //   {
+  //     title: 'Виница',
+  //     value: 'vinnica',
+  //     id: 9
+  //   },
+  //   {
+  //     title: 'Днепр',
+  //     value: 'dnepr',
+  //     id: 10
+  //   },
+  // ])
+
+  const citiesNode = cities.concat().splice(0, 6).map(city => {
     return (
       <div 
         key={city.id} 
@@ -71,8 +129,6 @@ const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
     )
   })
 
-  const [currentCity, setCurrentCity] = React.useState('Николаев')
-
   return (
     <Div>
       <div className="Modal__title" onClick={click}>{currentCity} <span>Down</span></div>
@@ -80,11 +136,14 @@ const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
       <div className="Modal__body">
         <div className="Modal__BodyTitle">Выберите город: <span onClick={click}>X</span></div>
         <div className="Modal__city">
-          {cities}
+          {citiesNode}
         </div>
         <div className="Modal__search">
-          <input /> 
-          {/* Новый компонент Input */}
+          <InputDropDown 
+            cities={cities} 
+            search={search} 
+            change={(event:React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+          />
         </div>
       </div>
       }
