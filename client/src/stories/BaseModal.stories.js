@@ -15,7 +15,7 @@ export const DefaultView = () => {
 
   return (
     <div style={{margin: '0 auto', width: 'max-content'}}>
-      <BaseModal show={show} click={() => setShow(!show)}/>
+      <BaseModal show={show} click={() => setShow(!show)} left={'50%'}/>
     </div>
   )
 }

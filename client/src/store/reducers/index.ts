@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux'
+import citiesReducer from './citiesReducer'
 
-const reducer =  combineReducers({
-
-
+const reducers =  combineReducers({
+  cities: citiesReducer
 })
 
-export default reducer
+export default reducers
+export type RootState = ReturnType<typeof reducers>;

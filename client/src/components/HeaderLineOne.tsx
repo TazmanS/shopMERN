@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import BaseModal from './BaseModal'
 import BaseToggle from './BaseToggle'
+import { useDispatch } from 'react-redux'
+import { getAllCities } from '../store/actions/cities'
 
 const HeaderLineOne = () => {
+  const dispatch = useDispatch()
+
   const optionsOne = [
     {
       title: 'Светлая',
@@ -25,11 +30,16 @@ const HeaderLineOne = () => {
     }
   ]
 
+  const [show, setShow] = React.useState(false)
+
   return (
     <Div>
-      <div>
-        Выпадашка
-      </div>
+      <button onClick={dispatch(getAllCities)}>11</button>
+      <BaseModal 
+        show={show} 
+        left={'150px'}
+        click={() => setShow(!show)} 
+      />
       <BaseToggle options={optionsOne} />
       <ul>
         <li>Блог</li>

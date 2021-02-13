@@ -1,10 +1,10 @@
 import {createStore, applyMiddleware} from 'redux'
 import reduxThunk from 'redux-thunk'
 import {Provider} from 'react-redux'
-import reducer from './reducers'
+import reducers from './reducers'
 import React from 'react'
 
-export const store = createStore(reducer, applyMiddleware(
+export const store = createStore(reducers, applyMiddleware(
   reduxThunk
 ))
 

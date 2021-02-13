@@ -1,13 +1,17 @@
-import React, { ReactEventHandler } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import InputDropDown from './InputDropDown'
+import { BsArrowDown, BsFillXCircleFill } from "react-icons/bs";
+
+
 
 interface BaseModalInterface {
   show: boolean,
-  click(): void
+  click(): void,
+  left?: string
 }
 
-const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
+const BaseModal:React.FC<BaseModalInterface> = ({show, click, left }) => {
 
   const cities = [
     {
@@ -64,58 +68,6 @@ const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
 
   const [currentCity, setCurrentCity] = React.useState('Николаев')
   const [search, setSearch] = React.useState('')
-  // const [cities, setSities] = React.useState([
-  //   {
-  //     title: 'Киев',
-  //     value: 'kiev',
-  //     id: 1
-  //   },
-  //   {
-  //     title: 'Одесса',
-  //     value: 'odessa',
-  //     id: 2
-  //   },
-  //   {
-  //     title: 'Николаев',
-  //     value: 'nikolaev',
-  //     id: 3
-  //   },
-  //   {
-  //     title: 'Харьков',
-  //     value: 'kharkov',
-  //     id: 4
-  //   },
-  //   {
-  //     title: 'Запорожье',
-  //     value: 'zaporojie',
-  //     id: 5
-  //   },
-  //   {
-  //     title: 'Львов',
-  //     value: 'lviv',
-  //     id: 6
-  //   },
-  //   {
-  //     title: 'Суммы',
-  //     value: 'symmi',
-  //     id: 7
-  //   },
-  //   {
-  //     title: 'Херсон',
-  //     value: 'kherson',
-  //     id: 8
-  //   },
-  //   {
-  //     title: 'Виница',
-  //     value: 'vinnica',
-  //     id: 9
-  //   },
-  //   {
-  //     title: 'Днепр',
-  //     value: 'dnepr',
-  //     id: 10
-  //   },
-  // ])
 
   const citiesNode = cities.concat().splice(0, 6).map(city => {
     return (
@@ -130,11 +82,17 @@ const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
   })
 
   return (
-    <Div>
-      <div className="Modal__title" onClick={click}>{currentCity} <span>Down</span></div>
-      {show && 
+    <Div data-show={show} data-left={left}>
+      <div className="Modal__title" onClick={click}>
+        {currentCity} 
+        <BsArrowDown className="arrow"/>
+      </div>
+      {/* {show &&  */}
       <div className="Modal__body">
-        <div className="Modal__BodyTitle">Выберите город: <span onClick={click}>X</span></div>
+        <div className="Modal__BodyTitle">
+          Выберите город: 
+          <BsFillXCircleFill onClick={click} />
+        </div>
         <div className="Modal__city">
           {citiesNode}
         </div>
@@ -146,7 +104,7 @@ const BaseModal:React.FC<BaseModalInterface> = ({show, click}) => {
           />
         </div>
       </div>
-      }
+      {/* } */}
     </Div>
   )
 }
@@ -161,9 +119,12 @@ position: relative;
   margin: 0 auto;
   user-select: none;
   cursor: pointer;
+  align-items: center;
+  display: flex;
 
-  & span{
-    font-weight: normal;
+  .arrow{
+    transition: all 0.3s;
+    transform: ${(props: any) => props['data-show'] ? 'rotate(180deg)' : 'rotate(0deg)'}; 
   }
 }
 
@@ -179,16 +140,24 @@ position: relative;
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  left: 50%;
+  left: ${(props: any) => props['data-left']};
   top: 20px;
-  transform: translateX(-50%);
+  transform: ${(props: any) => props['data-show'] 
+    ? 'scale(1) translateX(-50%)' 
+    : 'scale(0) translateX(-50%)'};
   padding: 0 15px;
+  z-index: 3;
+  transition: all 0.3s;
+  opacity: ${(props: any) => props['data-show'] ? '1' : '0'};
 
   .Modal__BodyTitle {
     margin-top: 15px;
     user-select: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
-    span{
+    svg{
       cursor: pointer;
     }
   }
