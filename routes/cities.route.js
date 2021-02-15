@@ -3,18 +3,14 @@ const Cities = require('../models/cities.model')
 
 const router = Router()
 
-router.get('/', async(req, res) => {
-  console.log('eeee')
-})
-
-router.post('/', async (req, res) => {
-  const city = new Cities({
-    title: req.body.title,
-    value: req.body.value
-  })
-
-  await city.save()
-  res.status(200).json("Article add")
+router.get('/', async (req, res) => {
+  try {
+    const cities = await Cities.find()
+    
+    res.status(200).json(cities)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 module.exports = router

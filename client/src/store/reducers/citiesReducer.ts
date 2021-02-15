@@ -4,7 +4,7 @@ interface State {
   cities: {
     title: string,
     value: string,
-    id: number
+    _id: string
   }[],
   currentCity: string
 }
@@ -29,7 +29,8 @@ const citiesReducer = (
   switch (action.type) {
     case ActionType.GET_ALL_CITIES:
       return {
-        ...state
+        ...state,
+        cities: action.payload
       }
 
     default: 
