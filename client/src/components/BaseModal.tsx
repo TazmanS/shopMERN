@@ -13,7 +13,7 @@ const BaseModal:React.FC<BaseModalInterface> = ({setShowModal, title, children, 
   return (
     <Div data-show={show}>
       <div className="Modal__title" onClick={setShowModal}>
-        {title} 
+        <div>{title}</div> 
         <BsArrowDown className="arrow"/>
       </div>
       {children}

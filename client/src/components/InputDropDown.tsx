@@ -14,7 +14,7 @@ interface InputDropDownI {
 
 const InputDropDown:React.FC<InputDropDownI> = ({cities, search, change, choseCity}) => {
   const citiesList = cities.map(city => {
-    if( city.title.toLowerCase().includes(search.toLowerCase()) ) {
+    if( city.title.toLowerCase().includes(search.toLowerCase()) && search.trim() ) {
       return (
         <div 
           key={city._id}
@@ -28,16 +28,16 @@ const InputDropDown:React.FC<InputDropDownI> = ({cities, search, change, choseCi
       return null
     }
   })
-  console.log(citiesList)
+  
   return (
     <Div>
       <input value={search} onChange={change} />
-      {search.trim() && citiesList.length > 0
-        ? <div className="DrowDown__list">
+      {/* {search.trim() && citiesList.length > 0 */}
+        <div className="DrowDown__list">
             { citiesList }
           </div>
-        : null
-      }
+        {/* : null
+      } */}
     </Div>
   )
 }

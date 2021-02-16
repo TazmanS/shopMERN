@@ -8,8 +8,6 @@ import { getAllCities } from '../store/actions/cities'
 import { BsFillXCircleFill } from "react-icons/bs"
 import InputDropDown from './InputDropDown'
 
-
-
 const HeaderLineOne = () => {
   const dispatch = useDispatch()
 
@@ -39,7 +37,6 @@ const HeaderLineOne = () => {
     }
   ]
   
-
   const [show, setShow] = React.useState(false)
   const [title, setTitle] = React.useState('Николаев')
   const [search, setSearch] = React.useState('')

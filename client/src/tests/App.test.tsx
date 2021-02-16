@@ -1,8 +1,14 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from '../App';
+import Store from '../store/index'
 
 describe('Render App', () => {
   test('Start', () => {
-    render(<App />);
+    render(
+      <Store> 
+        <App /> 
+      </Store>
+    );
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 })
