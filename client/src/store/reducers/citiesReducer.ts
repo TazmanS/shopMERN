@@ -18,7 +18,13 @@ interface getAllCities {
 }
 
 const initialState = {
-  cities: [],
+  cities: [
+    {
+      title: 'Одесса',
+      value: 'odessa',
+      _id: 'qwert'
+    }
+  ],
   currentCity: ''
 }
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const HeaderLineTwo = () => {
   return (
-    <Div>
+    <Container>
       <div>LOGO</div>
       <div>
         <ul>
@@ -15,11 +15,11 @@ const HeaderLineTwo = () => {
           <li>Акции</li>
         </ul>
       </div>
-    </Div>
+    </Container>
   )
 }
 
-const Div = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 25px;

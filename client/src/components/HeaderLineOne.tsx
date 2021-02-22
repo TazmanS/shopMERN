@@ -8,7 +8,7 @@ import { getAllCities } from '../store/actions/cities'
 import { BsFillXCircleFill } from "react-icons/bs"
 import InputDropDown from './InputDropDown'
 
-const HeaderLineOne = () => {
+const HeaderLineOne:React.FC = () => {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
@@ -40,6 +40,8 @@ const HeaderLineOne = () => {
   const [show, setShow] = React.useState(false)
   const [title, setTitle] = React.useState('Николаев')
   const [search, setSearch] = React.useState('')
+  const [checkOne, setCheckOne] = React.useState(true)
+  const [checkTwo, setCheckTwo] = React.useState(false)
   const { cities } = useTypedSelector(
     (state) => state.cities
   )
@@ -57,21 +59,21 @@ const HeaderLineOne = () => {
   })
 
   return (
-    <Div data-left={'125px'} data-show={show}>
+    <Container>
       <BaseModal 
         setShowModal={() => setShow(!show)} 
         title={title}
         show={show}
       >
-        <div className="Modal__body">
-          <div className="Modal__BodyTitle">
+        <StyledModalBody left={'125px'} show={show}>
+          <StyledModalBodyTitle>
             Выберите город: 
             <BsFillXCircleFill onClick={() => setShow(!show)} />
-          </div>
-          <div className="Modal__city">
+          </StyledModalBodyTitle>
+          <StyledModalCites>
             {citiesNode}
-          </div>
-          <div className="Modal__search">
+          </StyledModalCites>
+          <SrtledModalSearch>
             <InputDropDown 
               cities={cities} 
               search={search} 
@@ -81,10 +83,14 @@ const HeaderLineOne = () => {
                 setShow(false)
               }}
             />
-          </div>
-        </div>
+          </SrtledModalSearch>
+        </StyledModalBody>
       </BaseModal>
-      <BaseToggle options={optionsOne} />
+      <BaseToggle 
+        options={optionsOne} 
+        check={checkOne} 
+        change={() => setCheckOne(!checkOne)} 
+      />
       <ul>
         <li>Блог</li>
         <li>Fishka</li>
@@ -95,12 +101,16 @@ const HeaderLineOne = () => {
         <li>Гарантия / Возврат</li>
         <li>Контакты</li>
       </ul>
-      <BaseToggle options={optionsTwo} />
-    </Div>
+      <BaseToggle 
+        options={optionsTwo} 
+        check={checkTwo}
+        change={() => setCheckTwo(!checkTwo)} 
+      />
+    </Container>
   )
 }
 
-const Div = styled.div `
+const Container = styled.div `
   display: flex;
   justify-content: space-around;
 
@@ -113,8 +123,9 @@ const Div = styled.div `
       list-style-type: none;
     }
   }
+`
 
-.Modal__body{
+const StyledModalBody = styled.div<{show: boolean, left: string}>`
   width: 260px;
   height: 213px;
   background-color: #ffffff;
@@ -126,50 +137,48 @@ const Div = styled.div `
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  left: ${(props: any) => props['data-left']};
+  left: ${({left}) => left};
   top: 20px;
-  transform: ${(props: any) => props['data-show'] 
+  transform: ${({show}) => show 
     ? 'scale(1) translateX(-50%)' 
     : 'scale(0) translateX(-50%)'};
   padding: 0 15px;
   z-index: 3;
   transition: all 0.3s;
-  opacity: ${(props: any) => props['data-show'] ? '1' : '0'};
+  opacity: ${({show}) => show ? '1' : '0'};
+`
 
-  .Modal__BodyTitle {
-    margin-top: 15px;
-    user-select: none;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+const StyledModalBodyTitle = styled.div`
+  margin-top: 15px;
+  user-select: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
-    svg{
-      cursor: pointer;
-    }
+  svg{
+    cursor: pointer;
+  }
+`
+
+const StyledModalCites = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  div{
+    padding: 5px;
+    color: #3131f3;
+    cursor: pointer;
   }
 
-  .Modal__city{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-
-    div{
-      padding: 5px;
-      color: #3131f3;
-      cursor: pointer;
-    }
-
-    div:hover{
-      background-color: #f1f1f1;
-    }
+  div:hover{
+    background-color: #f1f1f1;
   }
+`
 
-  .Modal__search{
-    margin-bottom: 15px;
-  }
-}
-
+const SrtledModalSearch = styled.div`
+  margin-bottom: 15px;
 `
 
 export default HeaderLineOne

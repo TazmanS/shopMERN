@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import BaseToggle from '../components/BaseToggle'
+import BaseToggle from '../../components/BaseToggle'
 import userEvent from '@testing-library/user-event'
 
 describe('Render', () => {

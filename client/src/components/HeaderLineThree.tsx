@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const HeaderLineThree = () => {
   return (
-    <Div>
+    <Container>
       <div>
         Каталог
       </div>
@@ -19,11 +19,11 @@ const HeaderLineThree = () => {
       <div>
         Корзина
       </div>
-    </Div>
+    </Container>
   )
 }
 
-const Div = styled.div `
+const Container = styled.div `
   display: flex;
   justify-content: space-around;
 

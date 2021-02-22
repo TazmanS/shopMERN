@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react'
-import BaseModal from '../components/BaseModal'
+import BaseModal from '../../components/BaseModal'
 
 describe('Base Modal', () => {
   test('Render with title', () => {

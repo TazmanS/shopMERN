@@ -30,30 +30,27 @@ const InputDropDown:React.FC<InputDropDownI> = ({cities, search, change, choseCi
   })
   
   return (
-    <Div>
+    <Container>
       <input value={search} onChange={change} />
-      {/* {search.trim() && citiesList.length > 0 */}
-        <div className="DrowDown__list">
-            { citiesList }
-          </div>
-        {/* : null
-      } */}
-    </Div>
+      <StyledDropDownList>
+        { citiesList }
+      </StyledDropDownList>
+    </Container>
   )
 }
 
-const Div = styled.div`
+const Container = styled.div`
 
-& {
   position: relative;
-}
 
-input{
-  padding: 5px;
-  font-size: 16px;
-}
+  input{
+    padding: 5px;
+    font-size: 16px;
+  }
 
-.DrowDown__list{
+`
+
+const StyledDropDownList = styled.div `
   max-height: 50px;
   width: calc(100% - 5px );
   overflow-y: hidden;
@@ -71,8 +68,6 @@ input{
       background-color: #999999;
     }
   }
-}
-
 `
 
 export default InputDropDown

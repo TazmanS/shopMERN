@@ -3,13 +3,13 @@ import styled from 'styled-components'
 
 const Footer = () => {
   return (
-    <Div>
-      <div className="Footer__line1">
+    <StyledFooter>
+      <FooterTop>
         <div>Присоединяйся к нашим соц. сетям!</div>
         <div>Узнавай о новых акциях!</div>
         <div>Обращайся по любым вопросам!</div>
-      </div>
-      <div className="Footer__line2">
+      </FooterTop>
+      <FooterBottom>
         <div>
           <h3>Компания</h3>
           <ul>
@@ -50,27 +50,23 @@ const Footer = () => {
         <div>
           LOGO
         </div>
-      </div>
-    </Div>
+      </FooterBottom>
+    </StyledFooter>
   )
 }
 
-const Div = styled.div `
-
+const StyledFooter = styled.div `
   display: flex;
   flex-direction: column;
+`
 
-  & .Footer__line1{
-    display: flex;
-  }
+const FooterTop = styled.div `
+  display: flex;
+`
 
-  & .Footer__line2{
-    display: flex;
-    justify-content: space-around;
-  }
-
-
-
+const FooterBottom = styled.div `
+  display: flex;
+  justify-content: space-around;
 `
 
 export default Footer

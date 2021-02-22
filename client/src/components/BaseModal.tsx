@@ -11,21 +11,20 @@ interface BaseModalInterface {
 const BaseModal:React.FC<BaseModalInterface> = ({setShowModal, title, children, show }) => {
 
   return (
-    <Div data-show={show}>
-      <div className="Modal__title" onClick={setShowModal}>
+    <Container>
+      <Title onClick={setShowModal}>
         <div>{title}</div> 
-        <BsArrowDown className="arrow"/>
-      </div>
+        <Icon as={BsArrowDown} show={show ? show.toString() : undefined} />
+      </Title>
       {children}
-    </Div>
+    </Container>
   )
 }
 
-const Div = styled.div `
-
-position: relative;
-
-.Modal__title{
+const Container = styled.div `
+  position: relative;
+`
+const Title = styled.div `
   font-size: 16px;
   font-weight: 600;
   margin: 0 auto;
@@ -33,16 +32,10 @@ position: relative;
   cursor: pointer;
   align-items: center;
   display: flex;
-
-  .arrow{
-    transition: all 0.3s;
-    transform: ${(props: any) => props['data-show'] ? 'rotate(180deg)' : 'rotate(0deg)'}; 
-  }
-}
-
-
-
-
+`
+const Icon = styled.div<{show: String | undefined}>`
+  transition: all 0.3s;
+  transform: ${({show}) => show ? 'rotate(180deg)' : 'rotate(0deg)'};
 `
 
 export default BaseModal

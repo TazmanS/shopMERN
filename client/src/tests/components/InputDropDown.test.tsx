@@ -1,5 +1,5 @@
 import { getByText, render, screen } from '@testing-library/react'
-import InputDropDown from '../components/InputDropDown'
+import InputDropDown from '../../components/InputDropDown'
 import userEvent from '@testing-library/user-event'
 
 describe('Input Drop Down', () => {
