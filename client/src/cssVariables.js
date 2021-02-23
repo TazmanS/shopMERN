@@ -1,7 +1,7 @@
 
 
 export const cssVariables = {
-  textColor1: '',
+  textColor1: '#f2f2f2', // almost white
   textColor2: '',
   textColor3: '',
   textColor4: '',
@@ -10,8 +10,8 @@ export const cssVariables = {
   textColor7: '',
   textColor8: '',
 
-  bgColor1: '',
-  bgColor2: '',
+  bgColor1: '#404040', // light GB
+  bgColor2: '#323232', // dark BG
   bgColor3: '',
   bgColor4: '',
   bgColor5: '',

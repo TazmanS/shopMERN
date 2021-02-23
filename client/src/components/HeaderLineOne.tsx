@@ -7,6 +7,7 @@ import { useTypedSelector } from '../hooks/useTypedSelector'
 import { getAllCities } from '../store/actions/cities'
 import { BsFillXCircleFill } from "react-icons/bs"
 import InputDropDown from './InputDropDown'
+import {cssVariables} from '../cssVariables'
 
 const HeaderLineOne:React.FC = () => {
   const dispatch = useDispatch()
@@ -59,60 +60,62 @@ const HeaderLineOne:React.FC = () => {
   })
 
   return (
-    <Container>
-      <BaseModal 
-        setShowModal={() => setShow(!show)} 
-        title={title}
-        show={show}
-      >
-        <StyledModalBody left={'125px'} show={show}>
-          <StyledModalBodyTitle>
-            Выберите город: 
-            <BsFillXCircleFill onClick={() => setShow(!show)} />
-          </StyledModalBodyTitle>
-          <StyledModalCites>
-            {citiesNode}
-          </StyledModalCites>
-          <SrtledModalSearch>
-            <InputDropDown 
-              cities={cities} 
-              search={search} 
-              change={(event:React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
-              choseCity={(title) => {
-                setTitle(title)
-                setShow(false)
-              }}
-            />
-          </SrtledModalSearch>
-        </StyledModalBody>
-      </BaseModal>
-      <BaseToggle 
-        options={optionsOne} 
-        check={checkOne} 
-        change={() => setCheckOne(!checkOne)} 
-      />
-      <ul>
-        <li>Блог</li>
-        <li>Fishka</li>
-        <li>Вакансии</li>
-        <li>Магазины</li>
-        <li>Доставка и оплата</li>
-        <li>Кредит</li>
-        <li>Гарантия / Возврат</li>
-        <li>Контакты</li>
-      </ul>
-      <BaseToggle 
-        options={optionsTwo} 
-        check={checkTwo}
-        change={() => setCheckTwo(!checkTwo)} 
-      />
-    </Container>
+    <StyledContainer>
+      <StyledWrap>
+        <BaseModal 
+          setShowModal={() => setShow(!show)} 
+          title={title}
+          show={show}
+        >
+          <StyledModalBody left={'125px'} show={show}>
+            <StyledModalBodyTitle>
+              Выберите город: 
+              <BsFillXCircleFill onClick={() => setShow(!show)} />
+            </StyledModalBodyTitle>
+            <StyledModalCites>
+              {citiesNode}
+            </StyledModalCites>
+            <SrtledModalSearch>
+              <InputDropDown 
+                cities={cities} 
+                search={search} 
+                change={(event:React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+                choseCity={(title) => {
+                  setTitle(title)
+                  setShow(false)
+                }}
+              />
+            </SrtledModalSearch>
+          </StyledModalBody>
+        </BaseModal>
+        <BaseToggle 
+          options={optionsOne} 
+          check={checkOne} 
+          change={() => setCheckOne(!checkOne)} 
+        />
+        <ul>
+          <li>Блог</li>
+          <li>Fishka</li>
+          <li>Вакансии</li>
+          <li>Магазины</li>
+          <li>Доставка и оплата</li>
+          <li>Кредит</li>
+          <li>Гарантия / Возврат</li>
+          <li>Контакты</li>
+        </ul>
+        <BaseToggle 
+          options={optionsTwo} 
+          check={checkTwo}
+          change={() => setCheckTwo(!checkTwo)} 
+        />
+      </StyledWrap>
+    </StyledContainer>
   )
 }
 
-const Container = styled.div `
-  display: flex;
-  justify-content: space-around;
+const StyledContainer = styled.div `
+  width: 100%;
+  background-color: ${cssVariables.bgColor1};
 
   & ul {
     display: grid;
@@ -123,6 +126,15 @@ const Container = styled.div `
       list-style-type: none;
     }
   }
+`
+
+const StyledWrap = styled.div`
+  max-width: 1170px;
+  padding: 5px 15px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-around;
 `
 
 const StyledModalBody = styled.div<{show: boolean, left: string}>`
