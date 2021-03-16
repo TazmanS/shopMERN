@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {cssVariables} from '../cssVariables'
+import {BG_COLOR, NUMBER, SIZE} from '../cssVariables'
 import { Link } from 'react-router-dom'
 
 const HeaderLineTwo = () => {
@@ -54,7 +54,7 @@ const HeaderLineTwo = () => {
 }
 
 const StyledContainer = styled.div`
-  background-color: ${cssVariables.bgColor2};
+  background-color: ${BG_COLOR.bg_dark_dark};
   width: 100%;
 `
 
@@ -62,7 +62,7 @@ const StyledWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
   max-width: 1170px;
 `
@@ -73,10 +73,10 @@ const StyledLogo = styled.img `
 `
 
 const StyledList = styled.ul `
-  font-size: calc(13 / 16 * 1rem);
+  font-size: calc(${SIZE.size1} + 1px);
   display: grid;
   grid-auto-flow: column;
-  grid-gap: 25px;
+  grid-gap: calc(${NUMBER.num2} + 5px);
 `
 
 const StyledListItem = styled.li `

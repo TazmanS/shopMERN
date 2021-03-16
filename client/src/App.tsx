@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {SIZE, COLOR} from './cssVariables'
 import styled from 'styled-components'
 import Header from './sections/Header'
 import Footer from './sections/Footer'
@@ -21,6 +22,8 @@ function App() {
 
 const StyledContainer = styled.div `
   width: 100%;
+  color: ${COLOR.main};
+  font-size: ${SIZE.size2};
 `
 
 export default App;

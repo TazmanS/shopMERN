@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import BaseModal from './BaseModal'
+import {BG_COLOR, SIZE, NUMBER} from '../cssVariables'
 import BaseToggle from './BaseToggle'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../hooks/useTypedSelector'
 import { getAllCities } from '../store/actions/cities'
-import { BsFillXCircleFill } from "react-icons/bs"
-import InputDropDown from './InputDropDown'
-import {cssVariables} from '../cssVariables'
+
+import GeoDropDown from './GeoDropDown'
 
 const HeaderLineOne:React.FC = () => {
   const dispatch = useDispatch()
@@ -38,56 +36,13 @@ const HeaderLineOne:React.FC = () => {
     }
   ]
   
-  const [show, setShow] = React.useState(false)
-  const [title, setTitle] = React.useState('Николаев')
-  const [search, setSearch] = React.useState('')
   const [checkOne, setCheckOne] = React.useState(true)
   const [checkTwo, setCheckTwo] = React.useState(false)
-  const { cities } = useTypedSelector(
-    (state) => state.cities
-  )
-
-  const citiesNode = cities.concat().splice(0, 6).map(city => {
-    return (
-      <div 
-        key={city._id} 
-        onClick={() => {
-          setTitle(city.title)
-          setShow(!show)
-        }} 
-      >{city.title}</div>
-    )
-  })
 
   return (
     <StyledContainer>
       <StyledWrap>
-        <BaseModal 
-          setShowModal={() => setShow(!show)} 
-          title={title}
-          show={show}
-        >
-          <StyledModalBody left={'125px'} show={show}>
-            <StyledModalBodyTitle>
-              Выберите город: 
-              <BsFillXCircleFill onClick={() => setShow(!show)} />
-            </StyledModalBodyTitle>
-            <StyledModalCites>
-              {citiesNode}
-            </StyledModalCites>
-            <SrtledModalSearch>
-              <InputDropDown 
-                cities={cities} 
-                search={search} 
-                change={(event:React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
-                choseCity={(title) => {
-                  setTitle(title)
-                  setShow(false)
-                }}
-              />
-            </SrtledModalSearch>
-          </StyledModalBody>
-        </BaseModal>
+        <GeoDropDown />
         <BaseToggle 
           options={optionsOne} 
           check={checkOne} 
@@ -115,82 +70,28 @@ const HeaderLineOne:React.FC = () => {
 
 const StyledContainer = styled.div `
   width: 100%;
-  background-color: ${cssVariables.bgColor1};
+  background-color: ${BG_COLOR.bg_dark_light};
 
   & ul {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: 10px;
+    grid-gap: calc(${NUMBER.num1});
 
     & li {
       list-style-type: none;
+      font-size: calc(${SIZE.size1} + 2px);
     }
   }
 `
 
 const StyledWrap = styled.div`
   max-width: 1170px;
-  padding: 5px 15px;
+  padding: calc(${NUMBER.num0} + 5px) calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
 
   display: flex;
   justify-content: space-around;
-`
-
-const StyledModalBody = styled.div<{show: boolean, left: string}>`
-  width: 260px;
-  height: 213px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  border: 1px solid black;
-  box-shadow: 1px 1px black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  position: absolute;
-  left: ${({left}) => left};
-  top: 20px;
-  transform: ${({show}) => show 
-    ? 'scale(1) translateX(-50%)' 
-    : 'scale(0) translateX(-50%)'};
-  padding: 0 15px;
-  z-index: 3;
-  transition: all 0.3s;
-  opacity: ${({show}) => show ? '1' : '0'};
-`
-
-const StyledModalBodyTitle = styled.div`
-  margin-top: 15px;
-  user-select: none;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  svg{
-    cursor: pointer;
-  }
-`
-
-const StyledModalCites = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-
-  div{
-    padding: 5px;
-    color: #3131f3;
-    cursor: pointer;
-  }
-
-  div:hover{
-    background-color: #f1f1f1;
-  }
-`
-
-const SrtledModalSearch = styled.div`
-  margin-bottom: 15px;
 `
 
 export default HeaderLineOne

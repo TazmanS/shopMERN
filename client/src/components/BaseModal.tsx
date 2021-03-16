@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BsArrowDown } from "react-icons/bs";
+import {SIZE} from '../cssVariables'
+import { BsArrowDown } from "react-icons/bs"
 
 interface BaseModalInterface {
   setShowModal(): void,
@@ -25,7 +26,7 @@ const Container = styled.div `
   position: relative;
 `
 const Title = styled.div `
-  font-size: 16px;
+  font-size: ${SIZE.size2};
   font-weight: 600;
   margin: 0 auto;
   user-select: none;

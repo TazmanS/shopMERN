@@ -3,7 +3,7 @@ import HeaderLineOne from '../components/HeaderLineOne'
 import HeaderLineTwo from '../components/HeaderLineTwo'
 import HeaderLineThree from '../components/HeaderLineThree'
 import styled from 'styled-components'
-import {cssVariables} from '../cssVariables'
+import {COLOR} from '../cssVariables'
 
 const Header = () => {
   return (
@@ -17,7 +17,7 @@ const Header = () => {
 
 const StyledContainer = styled.header `
   width: 100%;
-  color: ${cssVariables.textColor1};
+  color: ${COLOR.white};
 `
 
 export default Header

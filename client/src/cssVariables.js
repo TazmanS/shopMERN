@@ -1,30 +1,31 @@
 
+export const BG_COLOR = { // bg-color
+  bg_dark_light: '#404040',
+  bg_dark_dark: '#323232',
+  red: '#e31837',
+  white: '#FFFFFF',
+  grey: '#999999'
+}
 
-export const cssVariables = {
-  textColor1: '#f2f2f2', // almost white
-  textColor2: '',
-  textColor3: '',
-  textColor4: '',
-  textColor5: '',
-  textColor6: '',
-  textColor7: '',
-  textColor8: '',
+export const COLOR = { // text-color
+  white: '#f2f2f2',
+  main: '#303030'
+}
 
-  bgColor1: '#404040', // light GB
-  bgColor2: '#323232', // dark BG
-  bgColor3: '',
-  bgColor4: '',
-  bgColor5: '',
-  bgColor6: '',
-  bgColor7: '',
-  bgColor8: '',
+export const SIZE = { // font-size
+  size1: '12px',
+  size2: '16px',
+  size3: '20px',
+  size4: '24px',
+  size5: '36px',
+  size6: '48px'
+} 
 
-  size1: '',
-  size2: '',
-  size3: '',
-  size4: '',
-  size5: '',
-  size6: '',
-  size7: '',
-  size8: '',
+export const NUMBER = { // margin, padding 
+  num0: '0px',
+  num1: '10px',
+  num2: '20px',
+  num3: '30px',
+  num4: '40px',
+  num5: '50px'
 }

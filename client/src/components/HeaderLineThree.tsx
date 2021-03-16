@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {cssVariables} from '../cssVariables'
+import {BG_COLOR, NUMBER} from '../cssVariables'
 
 const HeaderLineThree = () => {
   return (
@@ -28,12 +28,12 @@ const HeaderLineThree = () => {
 
 const StyledContainer = styled.div `
   width: 100%;
-  background-color: ${cssVariables.bgColor1};
+  background-color: ${BG_COLOR.bg_dark_light};
 `
 
 const StyledWrap = styled.div`
   max-width: 1170px;
-  padding: 0 15px;
+  padding: 0 calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
   display: flex;
   justify-content: space-around;

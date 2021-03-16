@@ -10,6 +10,7 @@
     "@types/node": "^14.14.25",
     "@types/react": "^17.0.1",
     "axios": "^0.21.1",
+    "currency-formatter": "^1.5.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",

@@ -50,7 +50,7 @@ const FooterBottom = () => {
 
 const StyledContainer = styled.div `
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 
 export default FooterBottom
