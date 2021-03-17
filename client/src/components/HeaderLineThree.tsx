@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {BG_COLOR, NUMBER} from '../cssVariables'
 import Cart from './Cart'
+import SearchInput from './SearchInput'
 import UserBlock from './UserBlock'
 
 const HeaderLineThree = () => {
@@ -14,9 +15,7 @@ const HeaderLineThree = () => {
         <div>
           Номер Выпадашка
         </div>
-        <div>
-          поиск товара
-        </div>
+        <SearchInput />
         <UserBlock />
         <Cart />
       </StyledWrap>
@@ -31,6 +30,7 @@ const StyledContainer = styled.div `
 
 const StyledWrap = styled.div`
   max-width: 1170px;
+  min-height: 49px;
   padding: 0 calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
   display: flex;
