@@ -13,6 +13,7 @@ export const COLOR = { // text-color
 }
 
 export const SIZE = { // font-size
+  size0: '8px',
   size1: '12px',
   size2: '16px',
   size3: '20px',

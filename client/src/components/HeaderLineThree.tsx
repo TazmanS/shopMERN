@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import {BG_COLOR, NUMBER} from '../cssVariables'
+import Cart from './Cart'
+import UserBlock from './UserBlock'
 
 const HeaderLineThree = () => {
   return (
@@ -15,12 +17,8 @@ const HeaderLineThree = () => {
         <div>
           поиск товара
         </div>
-        <div>
-          вход
-        </div>
-        <div>
-          Корзина
-        </div>
+        <UserBlock />
+        <Cart />
       </StyledWrap>
     </StyledContainer>
   )
@@ -37,6 +35,7 @@ const StyledWrap = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `
 
 export default HeaderLineThree
