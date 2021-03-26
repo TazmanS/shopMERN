@@ -6,7 +6,7 @@ import CatalogItem from './CatalogItem'
 
 
 const Catalog = () => {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   const [subIndex, setSubIndex] = useState<Number | null>(null);
 
   const hideElement = () => {

@@ -2,17 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import {BG_COLOR, SIZE, NUMBER} from '../cssVariables'
 import BaseToggle from './BaseToggle'
-import { useDispatch } from 'react-redux'
-import { getAllCities } from '../store/actions/cities'
 
 import GeoDropDown from './GeoDropDown'
 
 const HeaderLineOne:React.FC = () => {
-  const dispatch = useDispatch()
-
-  React.useEffect(() => {
-    dispatch(getAllCities())
-  }, [dispatch])
 
   const optionsOne = [
     {

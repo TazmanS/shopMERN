@@ -6,20 +6,31 @@ import {currency} from '../helpers/index'
 import BaseButton from './BaseButton'
 import {Link} from 'react-router-dom'
 
-const Card = () => {
+interface CardInterface {
+  item: {
+    title: string,
+    price: string,
+    img: string,
+    id: string
+  }
+}
+
+const Card:React.FC<CardInterface> = ({item}) => {
+  const {title, price, img, id} = item
+
   return (
     <StyledContainer>
-      <Link to="/">
-        <StyledImg src="images/cardImg.jpg" alt="" />
+      <Link to={`/product/${id}`}>
+        <StyledImg src={img} alt={title} />
       </Link>
       <StyledTitle>
-        <Link to="/">
-          Xiaomi Mi 11 8/256GB Horizon Blue
+        <Link to={`/product/${id}`}>
+          {title}
         </Link>
       </StyledTitle>
       <StyledInfo>
         <StyledCurrency>
-          {currency(10000)}
+          {currency(Number(price))}
         </StyledCurrency>
         <BaseButton>
           <AiOutlineShoppingCart />
@@ -36,6 +47,7 @@ const StyledContainer = styled.div `
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0 0 10px rgb(0 0 0 / 7%);
 
   &:hover{

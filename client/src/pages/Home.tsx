@@ -2,18 +2,21 @@ import React from 'react'
 import {NUMBER} from '../cssVariables'
 import styled from 'styled-components'
 import Card from '../components/Card'
+import { useTypedSelector } from '../hooks/useTypedSelector'
 
 const Home = () => {
+
+  const { items } = useTypedSelector(store => store.goods)
+
   return (
     <StyledContainer>
       <StyledWrap>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        {items.map((item) => 
+          <Card
+            key={item.id}
+            item={item}
+          />
+        )}
       </StyledWrap>
     </StyledContainer>
   )
