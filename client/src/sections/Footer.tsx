@@ -17,6 +17,7 @@ const Footer = () => {
 
 const StyledContainer = styled.footer `
   width: 100%;
+  margin-top: ${NUMBER.num5};
 `
 
 const StyledWrap = styled.div`
@@ -24,7 +25,7 @@ const StyledWrap = styled.div`
   flex-direction: column;
   padding: 0 calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
-  max-width: 1170px;
+  /* max-width: 1170px; */
 `
 
 export default Footer

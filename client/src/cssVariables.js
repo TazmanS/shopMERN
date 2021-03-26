@@ -5,7 +5,8 @@ export const BG_COLOR = { // bg-color
   red: '#e31837',
   white: '#FFFFFF',
   grey: '#999999',
-  light_grey: '#DFDEE8FF'
+  light_grey: '#DFDEE8FF',
+  blue: '#5385cc'
 }
 
 export const COLOR = { // text-color
