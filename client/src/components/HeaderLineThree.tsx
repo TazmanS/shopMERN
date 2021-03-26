@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {BG_COLOR, NUMBER} from '../cssVariables'
 import Cart from './Cart'
+import NumberDropDown from './NumberDropDown'
 import SearchInput from './SearchInput'
 import UserBlock from './UserBlock'
 
@@ -12,9 +13,7 @@ const HeaderLineThree = () => {
         <div>
           Каталог
         </div>
-        <div>
-          Номер Выпадашка
-        </div>
+        <NumberDropDown />
         <SearchInput />
         <UserBlock />
         <Cart />
