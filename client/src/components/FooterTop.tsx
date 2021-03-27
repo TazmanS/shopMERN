@@ -68,6 +68,7 @@ const StyledIcon = styled.img`
   width: 45px;
   height: 45px;
   margin: 0 5px;
+  cursor: pointer;
 `
 
 const StyledSubscribe = styled.div`

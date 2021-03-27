@@ -36,12 +36,14 @@ const HeaderLineOne:React.FC = () => {
     <StyledContainer>
       <StyledWrap>
         <GeoDropDown />
-        <BaseToggle 
-          options={optionsOne} 
-          check={checkOne} 
-          change={() => setCheckOne(!checkOne)} 
-        />
-        <ul>
+        <StyledLight>
+          <BaseToggle 
+            options={optionsOne} 
+            check={checkOne} 
+            change={() => setCheckOne(!checkOne)} 
+          />
+        </StyledLight>
+        {/* <ul>
           <li>Блог</li>
           <li>Fishka</li>
           <li>Вакансии</li>
@@ -50,12 +52,15 @@ const HeaderLineOne:React.FC = () => {
           <li>Кредит</li>
           <li>Гарантия / Возврат</li>
           <li>Контакты</li>
-        </ul>
-        <BaseToggle 
-          options={optionsTwo} 
-          check={checkTwo}
-          change={() => setCheckTwo(!checkTwo)} 
-        />
+        </ul> */}
+        <StyledLanguage>
+          <BaseToggle
+            options={optionsTwo} 
+            check={checkTwo}
+            change={() => setCheckTwo(!checkTwo)} 
+          />
+        </StyledLanguage>
+        
       </StyledWrap>
     </StyledContainer>
   )
@@ -65,7 +70,7 @@ const StyledContainer = styled.div `
   width: 100%;
   background-color: ${BG_COLOR.bg_dark_light};
 
-  & ul {
+  /* & ul {
     display: grid;
     grid-auto-flow: column;
     grid-gap: calc(${NUMBER.num1});
@@ -74,7 +79,7 @@ const StyledContainer = styled.div `
       list-style-type: none;
       font-size: calc(${SIZE.size1} + 2px);
     }
-  }
+  } */
 `
 
 const StyledWrap = styled.div`
@@ -83,8 +88,15 @@ const StyledWrap = styled.div`
   margin: 0 auto;
 
   display: flex;
-  justify-content: space-around;
   align-items: center;
+`
+
+const StyledLanguage = styled.div`
+  margin: 0 0 0 auto;
+`
+
+const StyledLight = styled.div`
+  margin-left: 25px;
 `
 
 export default HeaderLineOne

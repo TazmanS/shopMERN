@@ -5,14 +5,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import {currency} from '../helpers/index'
 import BaseButton from './BaseButton'
 import {Link} from 'react-router-dom'
+ 
 
+import {Item as ItemType} from '../store/reducers/goodsReducer'
 interface CardInterface {
-  item: {
-    title: string,
-    price: string,
-    img: string,
-    id: string
-  }
+  item: ItemType
 }
 
 const Card:React.FC<CardInterface> = ({item}) => {

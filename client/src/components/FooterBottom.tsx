@@ -6,7 +6,7 @@ const FooterBottom = () => {
   return (
     <StyledContainer>
       <StyledWrap>
-        <div>
+        {/* <div>
           <StyledTitle>Компания</StyledTitle>
           <StyledList>
             <li>О нас</li>
@@ -42,7 +42,7 @@ const FooterBottom = () => {
             <li>СТраховка</li>
             <li>Юридически сервис</li>
           </StyledList>
-        </div>
+        </div> */}
         <StyledLogo src='/reactLogo.png' alt="Logo" />
       </StyledWrap>
     </StyledContainer>
@@ -61,28 +61,28 @@ const StyledWrap = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   color: ${COLOR.white};
   padding: 35px 0px;
   color: #bdbdbd;
   font-size: ${SIZE.size1};
 `
 
-const StyledTitle = styled.div`
-  color: ${COLOR.white};
-  font-size: calc(${SIZE.size1} + 2px);
-`
+// const StyledTitle = styled.div`
+//   color: ${COLOR.white};
+//   font-size: calc(${SIZE.size1} + 2px);
+// `
 
-const StyledList = styled.ul`
-  li{
-    cursor: pointer;
-    margin: 10px 0;
+// const StyledList = styled.ul`
+//   li{
+//     cursor: pointer;
+//     margin: 10px 0;
 
-    :hover{
-      color: ${COLOR.white};
-    }
-  }
-`
+//     :hover{
+//       color: ${COLOR.white};
+//     }
+//   }
+// `
 
 const StyledLogo = styled.img `
   width: 152px;

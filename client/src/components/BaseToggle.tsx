@@ -10,7 +10,7 @@ interface BaseToggleInterface {
 
 const BaseToggle:React.FC<BaseToggleInterface> = ({options, check = true, change}) => {
   return (
-    <Container>
+    <StyledContainer>
       {options ? <Option>{options[0].title}</Option> : null}
         <Switch>
           <input type="checkbox" checked={check} onChange={change}/>
@@ -19,11 +19,11 @@ const BaseToggle:React.FC<BaseToggleInterface> = ({options, check = true, change
           </Slider>
         </Switch>
         {options ? <Option>{options[1].title}</Option> : null}
-    </Container>
+    </StyledContainer>
   )
 }
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

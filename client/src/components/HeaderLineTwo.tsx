@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {BG_COLOR, NUMBER, SIZE} from '../cssVariables'
+import {BG_COLOR, NUMBER} from '../cssVariables'
 import { Link } from 'react-router-dom'
 
 const HeaderLineTwo = () => {
@@ -10,7 +10,7 @@ const HeaderLineTwo = () => {
         <Link to="/">
           <StyledLogo src='/reactLogo.png' alt="Logo" />
         </Link>
-        <StyledList>
+        {/* <StyledList>
           <StyledListItem>
             <Link to="/">
               <img src="/images/hl2-image1.png" alt="" />
@@ -47,7 +47,7 @@ const HeaderLineTwo = () => {
               Акции
             </Link>
           </StyledListItem>
-        </StyledList>
+        </StyledList> */}
       </StyledWrap>
     </StyledContainer>
   )
@@ -60,7 +60,7 @@ const StyledContainer = styled.div`
 
 const StyledWrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
@@ -70,24 +70,25 @@ const StyledWrap = styled.div`
 const StyledLogo = styled.img `
   width: 152px;
   height: 76px;
+  margin: 0 auto;
 `
 
-const StyledList = styled.ul `
-  font-size: calc(${SIZE.size1} + 1px);
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: calc(${NUMBER.num2} + 5px);
-`
+// const StyledList = styled.ul `
+//   font-size: calc(${SIZE.size1} + 1px);
+//   display: grid;
+//   grid-auto-flow: column;
+//   grid-gap: calc(${NUMBER.num2} + 5px);
+// `
 
-const StyledListItem = styled.li `
-  & a {
-    display: flex;
-    align-items: center;
-  }
+// const StyledListItem = styled.li `
+//   & a {
+//     display: flex;
+//     align-items: center;
+//   }
   
-  & img {
-    margin-right: 5px;
-  }
-`
+//   & img {
+//     margin-right: 5px;
+//   }
+// `
 
 export default HeaderLineTwo

@@ -23,9 +23,7 @@ const StyledContainer = styled.footer `
 const StyledWrap = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 calc(${NUMBER.num1} + 5px);
   margin: 0 auto;
-  /* max-width: 1170px; */
 `
 
 export default Footer

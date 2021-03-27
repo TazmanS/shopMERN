@@ -8,13 +8,16 @@ import Home from './pages/Home'
 
 import { useDispatch } from 'react-redux'
 import { getAllCities } from './store/actions/cities'
+import { getAllCategories } from './store/actions/categories'
 import Card from './pages/Card'
+import AdminPanel from './pages/AdminPanel'
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getAllCities())
+    dispatch(getAllCategories())
   }, [dispatch])
 
   return (
@@ -24,6 +27,7 @@ function App() {
         <Switch>
           <Route path={'/'} component={Home} exact/>
           <Route path={'/product/:id'} component={Card} />
+          <Route path={'/admin'} component={AdminPanel} />
         </Switch>
         <Footer />
       </StyledContainer>  

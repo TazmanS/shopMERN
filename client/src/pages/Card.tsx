@@ -11,13 +11,18 @@ const Card:React.FC<CardInterface> = () => {
   console.log(id)
   return (
     <StyledContainer>
-      {id}
+      <div>PHOTO + SLIDER</div><div>BUY BUTTON</div>
+      <div>DESCRIPTION</div>
+      <div>CHARACTERS</div>
+      <div>FEEDBACK</div>
+      <div>SLIDER</div>
     </StyledContainer>
   )
 }
 
 const StyledContainer = styled.div`
-
+  margin: 0 auto;
+  max-width: 1170px;
 `
 
 export default Card

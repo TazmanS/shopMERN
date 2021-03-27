@@ -29,10 +29,10 @@ const StyledContainer = styled.div `
 const StyledWrap = styled.div`
   max-width: 1170px;
   min-height: 49px;
-  padding: 0 calc(${NUMBER.num1} + 5px);
+  /* padding: 0 calc(${NUMBER.num1} + 5px); */
   margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `
 

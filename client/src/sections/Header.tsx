@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderLineOne from '../components/HeaderLineOne'
+// import HeaderLineOne from '../components/HeaderLineOne'
 import HeaderLineTwo from '../components/HeaderLineTwo'
 import HeaderLineThree from '../components/HeaderLineThree'
 import styled from 'styled-components'
@@ -8,7 +8,7 @@ import {COLOR} from '../cssVariables'
 const Header = () => {
   return (
     <StyledContainer>
-      <HeaderLineOne />
+      {/* <HeaderLineOne /> */}
       <HeaderLineTwo />
       <HeaderLineThree />
     </StyledContainer>
