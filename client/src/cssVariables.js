@@ -11,7 +11,8 @@ export const BG_COLOR = { // bg-color
 
 export const COLOR = { // text-color
   white: '#f2f2f2',
-  main: '#303030'
+  main: '#303030',
+  error: '#e31837'
 }
 
 export const SIZE = { // font-size

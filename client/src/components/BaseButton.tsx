@@ -2,9 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import {BG_COLOR, NUMBER, SIZE} from '../cssVariables'
 
-const BaseButton:React.FC = ({children}) => {
+interface ButtonInterface {
+  click?(): void
+}
+
+const BaseButton:React.FC<ButtonInterface> = ({children, click}) => {
   return (
-    <StyledContainer>
+    <StyledContainer onClick={click}>
       {children}
     </StyledContainer>
   )

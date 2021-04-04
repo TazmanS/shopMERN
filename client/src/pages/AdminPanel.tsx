@@ -2,21 +2,43 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import {addCategory} from '../store/actions/categories'
 import {useDispatch} from 'react-redux'
+import BaseInput from '../components/BaseInput'
+import BaseButton from '../components/BaseButton'
 
 const AdminPanel = () => {
   const dispatch = useDispatch()
 
-  const [categoryTitle, setCategoryTitle] = useState('')
+  const [titleOptions, setTitleOptions] = useState({
+    value: '',
+    placeholder: 'Введите название категории',
+    err: false,
+    errMessage: 'Какие-то проблемы с названием категории'
+  })
+  const [subCategory, setSubCategory] = useState([{}, {}])
   const [categoryImg, setCategoryImg] = useState('')
-  const [subCategory, setSubCategory] = useState([])
+
+  function setParam(obj: any, options: any) {
+    let a = Object.assign({}, obj)
+    for (let key in options) {
+      a[key] = options[key]
+    }
+    return a
+  }
+
+  const setTitle = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setTitleOptions( setParam(titleOptions, {value: event.target.value}) )
+  }
 
   return (
     <StyledContainer>
-      <div>Admin Panel</div>
       <StyledCategory>
-        <button onClick={() => dispatch(addCategory())}>
+        <BaseInput 
+          options={titleOptions}
+          setValue={setTitle}
+        />
+        <BaseButton click={() => dispatch(addCategory())}>
           ADD
-        </button>
+        </BaseButton>
       </StyledCategory>
     </StyledContainer>
   )
