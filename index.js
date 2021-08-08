@@ -10,6 +10,7 @@ app.use(express.json({ extended: true }))
 
 app.use('/api/cities', require('./routes/cities.route'))
 app.use('/api/categories', require('./routes/categories.route'))
+app.use('/api/auth', require('./routes/auth.route'))
 
 
 

@@ -5,7 +5,7 @@ import {BG_COLOR, NUMBER, SIZE} from '../cssVariables'
 interface ButtonInterface {
   click?(): void
 }
-
+// need add styles === color, width, size
 const BaseButton:React.FC<ButtonInterface> = ({children, click}) => {
   return (
     <StyledContainer onClick={click}>
