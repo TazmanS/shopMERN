@@ -16,7 +16,10 @@ const schema = new Schema({
 	phone: {
 		type: Number,
 		required: true
-	}
+	},
+  token: {
+    type: String
+  }
 })
 
 module.exports = model('auth', schema)
