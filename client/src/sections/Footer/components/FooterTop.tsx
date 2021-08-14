@@ -8,7 +8,7 @@ import {
   AiFillMessage,
   AiFillSkype,
   AiFillGithub } from "react-icons/ai"
-import {SIZE, BG_COLOR, COLOR} from '../cssVariables'
+import {SIZE, BG_COLOR, COLOR} from '../../../helpers/cssVariables'
 
 
 const FooterTop = () => {

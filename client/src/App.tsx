@@ -1,16 +1,10 @@
 import React, {useEffect} from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import {SIZE, COLOR} from './cssVariables'
-import styled from 'styled-components'
-import Header from './sections/Header'
-import Footer from './sections/Footer'
-import Home from './pages/Home'
-
+import Routes from './routes'
 import { useDispatch } from 'react-redux'
 import { getAllCities } from './store/actions/cities'
 import { getAllCategories } from './store/actions/categories'
-import Card from './pages/Card'
-import AdminPanel from './pages/AdminPanel'
+import {BrowserRouter} from 'react-router-dom'
+import { MainWrapper } from './sections'
 
 function App() {
   const dispatch = useDispatch()
@@ -22,23 +16,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <StyledContainer>
-        <Header />
-        <Switch>
-          <Route path={'/'} component={Home} exact/>
-          <Route path={'/product/:id'} component={Card} />
-          <Route path={'/admin'} component={AdminPanel} />
-        </Switch>
-        <Footer />
-      </StyledContainer>  
+      <MainWrapper>
+        <Routes />
+      </MainWrapper>
     </BrowserRouter>
   );
 }
-
-const StyledContainer = styled.div `
-  width: 100%;
-  color: ${COLOR.main};
-  font-size: ${SIZE.size2};
-`
 
 export default App;

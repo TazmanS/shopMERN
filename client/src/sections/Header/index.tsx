@@ -1,9 +1,8 @@
 import React from 'react'
 // import HeaderLineOne from '../components/HeaderLineOne'
-import HeaderLineTwo from '../components/HeaderLineTwo'
-import HeaderLineThree from '../components/HeaderLineThree'
+import {HeaderLineTwo, HeaderLineThree} from './components'
 import styled from 'styled-components'
-import {COLOR} from '../cssVariables'
+import {COLOR} from '../../helpers/cssVariables'
 
 const Header = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {BG_COLOR, NUMBER} from '../cssVariables'
+import {BG_COLOR, NUMBER} from '../../../helpers/cssVariables'
 import { Link } from 'react-router-dom'
 
 const HeaderLineTwo = () => {

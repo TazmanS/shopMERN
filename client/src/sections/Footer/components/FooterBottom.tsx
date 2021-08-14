@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {BG_COLOR, COLOR, SIZE} from '../cssVariables'
+import {BG_COLOR, COLOR, SIZE} from '../../../helpers/cssVariables'
 
 const FooterBottom = () => {
   return (

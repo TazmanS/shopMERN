@@ -17,9 +17,6 @@ const schema = new Schema({
 		type: Number,
 		required: true
 	},
-  token: {
-    type: String
-  }
 })
 
 module.exports = model('auth', schema)

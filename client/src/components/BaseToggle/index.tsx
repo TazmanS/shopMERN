@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {NUMBER} from '../cssVariables'
+import {NUMBER} from '../../helpers/cssVariables'
 
 interface BaseToggleInterface {
   options?: {title: string, value: string}[],

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {SIZE, COLOR} from '../cssVariables'
+import {SIZE, COLOR} from '../../helpers/cssVariables'
 
 interface InputInterface {
   options: {

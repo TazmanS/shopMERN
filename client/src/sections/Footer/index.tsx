@@ -1,8 +1,7 @@
 import React from 'react'
-import {NUMBER} from '../cssVariables'
+import {NUMBER} from '../../helpers/cssVariables'
 import styled from 'styled-components'
-import FooterTop from '../components/FooterTop'
-import FooterBottom from '../components/FooterBottom'
+import { FooterTop, FooterBottom } from './components'
 
 const Footer = () => {
   return (

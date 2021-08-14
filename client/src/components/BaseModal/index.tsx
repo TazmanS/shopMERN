@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {SIZE} from '../cssVariables'
+import {SIZE} from '../../helpers/cssVariables'
 import { BsArrowDown } from "react-icons/bs"
 
 interface BaseModalInterface {

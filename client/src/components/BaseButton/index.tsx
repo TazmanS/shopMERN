@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {BG_COLOR, NUMBER, SIZE} from '../cssVariables'
+import {BG_COLOR, NUMBER, SIZE} from '../../helpers/cssVariables'
 
 interface ButtonInterface {
   click?(): void

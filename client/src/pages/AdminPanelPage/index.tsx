@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import {addCategory} from '../store/actions/categories'
+import {addCategory} from '../../store/actions/categories'
 import {useDispatch} from 'react-redux'
-import BaseInput from '../components/BaseInput'
-import BaseButton from '../components/BaseButton'
-import {setParam} from '../helpers/index'
-import SubCategories from '../components/SubCategories'
+import BaseInput from '../../components/BaseInput'
+import BaseButton from '../../components/BaseButton'
+import {setParam} from '../../helpers/index'
 
-const AdminPanel = () => {
+const AdminPanelPage = () => {
   const dispatch = useDispatch()
 
   const [titleOptions, setTitleOptions] = useState({
@@ -64,7 +63,6 @@ const AdminPanel = () => {
           options={img}
           setValue={setImgFunction}
         />
-        <SubCategories />
         <BaseButton click={() => dispatch(addCategory())}>
           ADD
         </BaseButton>
@@ -86,4 +84,4 @@ const StyledCategory = styled.div`
 
 `
 
-export default AdminPanel
+export default AdminPanelPage

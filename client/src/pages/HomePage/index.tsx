@@ -1,22 +1,16 @@
 import React from 'react'
-import {NUMBER} from '../cssVariables'
+import {NUMBER} from '../../helpers/cssVariables'
 import styled from 'styled-components'
-import Card from '../components/Card'
-import { useTypedSelector } from '../hooks/useTypedSelector'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
-const Home = () => {
+const HomePage = () => {
 
   const { items } = useTypedSelector(store => store.goods)
 
   return (
     <StyledContainer>
       <StyledWrap>
-        {items.map((item) => 
-          <Card
-            key={item.id}
-            item={item}
-          />
-        )}
+
       </StyledWrap>
     </StyledContainer>
   )
@@ -37,4 +31,4 @@ const StyledWrap = styled.div`
   max-width: 1170px;
 `
 
-export default Home
+export default HomePage

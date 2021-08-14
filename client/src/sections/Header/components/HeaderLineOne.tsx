@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {BG_COLOR, SIZE, NUMBER} from '../cssVariables'
-import BaseToggle from './BaseToggle'
-
-import GeoDropDown from './GeoDropDown'
+import {BG_COLOR, SIZE, NUMBER} from '../../../helpers/cssVariables'
+import {BaseToggle} from '../../../components'
 
 const HeaderLineOne:React.FC = () => {
 
@@ -35,7 +33,6 @@ const HeaderLineOne:React.FC = () => {
   return (
     <StyledContainer>
       <StyledWrap>
-        <GeoDropDown />
         <StyledLight>
           <BaseToggle 
             options={optionsOne} 

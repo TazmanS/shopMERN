@@ -6,7 +6,7 @@ interface CardInterface {
 
 }
 
-const Card:React.FC<CardInterface> = () => {
+const ProductPage:React.FC<CardInterface> = () => {
   const { id } = useParams<{id: string}>()
   console.log(id)
   return (
@@ -25,4 +25,4 @@ const StyledContainer = styled.div`
   max-width: 1170px;
 `
 
-export default Card
+export default ProductPage

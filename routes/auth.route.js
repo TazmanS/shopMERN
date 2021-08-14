@@ -1,8 +1,8 @@
 const {Router} = require('express')
 const Auth = require('../models/auth.model')
-const {body} = require('express-validator');
+const {body, validationResult} = require('express-validator');
 const validationRules = require('../middleware/validation');
-const {generateAccessToken, getBcryptData} = require('../helpers/auth')
+const {generateAccessToken, getBcryptData, compareBcryptData} = require('../helpers/auth')
 
 const router = Router();
 
@@ -23,8 +23,7 @@ router.post('/register',
 			login,
 			password: bycript_password,
 			phone,
-			email,
-      token
+			email
 		})
 
 		const isUserExisted = await Auth.find({
@@ -45,9 +44,44 @@ router.post('/register',
 	} catch (e) {
     console.log(e)
 		return res.status(404).json({
-			message: 'Something get wrong!'
+			message: 'Something went wrong!'
 		})
 	}
+})
+
+router.post('/login', 
+	validationRules([
+		body('login').isString(),
+		body('password').isString().isLength({min: 6})
+	]), async (req, res) => {
+		const {login, password} = req.body;
+
+		try {
+			const existedUser = await Auth.find({login})
+			if (existedUser.length > 0) {
+				const comparePassword = await compareBcryptData(password, existedUser[0].password)
+				if (comparePassword) {
+					const token = await generateAccessToken({
+						login: existedUser[0].login,
+						email: existedUser[0].email
+					})
+					return res.status(200).json({
+						token,
+						data: {
+							login: existedUser[0].login,
+							email: existedUser[0].email,
+							phone: existedUser[0].phone,
+						}
+					})
+				}
+			} else {
+				return res.status(300).json({message: 'User is not found'})
+			}
+
+		} catch (e) {
+			console.log(e)
+			return res.status(404).json({message: 'Something went wrong'})
+		}
 })
 
 
