@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { getAllCities } from './store/actions/cities'
 import { getAllCategories } from './store/actions/categories'
 import {BrowserRouter} from 'react-router-dom'
-import { MainWrapper } from './sections'
 
 function App() {
   const dispatch = useDispatch()
@@ -16,9 +15,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <MainWrapper>
-        <Routes />
-      </MainWrapper>
+      <Routes />
     </BrowserRouter>
   );
 }

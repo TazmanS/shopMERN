@@ -1,99 +1,59 @@
-import React from 'react'
-import styled from 'styled-components'
-import {BG_COLOR, SIZE, NUMBER} from '../../../helpers/cssVariables'
+import React, { Provider } from 'react'
+import {BG_COLOR, NUMBER} from '../../../helpers/cssVariables'
 import {BaseToggle} from '../../../components'
+import { makeStyles } from '@material-ui/core'
+import User from './User'
+import { injectIntl } from 'react-intl'
 
-const HeaderLineOne:React.FC = () => {
 
-  const optionsOne = [
-    {
-      title: 'Светлая',
-      value: 'light'
-    },
-    {
-      title: 'Тёмная',
-      value: 'dark'
-    }
-  ]
+const useStyles = makeStyles({
+  container: {
+    width: '100%',
+    backgroundColor: BG_COLOR.bg_dark_light,
+  },
+  wrap: {
+    maxWidth: 1170,
+    padding: `${NUMBER.num1} ${NUMBER.num1}`,
+    margin: '0 auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  }
 
-  const optionsTwo = [
-    {
-      title: 'RU',
-      value: 'ru'
-    },
-    {
-      title: 'UA',
-      value: 'ua'
-    }
-  ]
+})
+
+interface HeaderLineOneInterface {
+  intl: any
+}
+
+const HeaderLineOne:React.FC<HeaderLineOneInterface> = (props) => {
+  const { intl } = props;
+  const classes = useStyles()
   
   const [checkOne, setCheckOne] = React.useState(true)
   const [checkTwo, setCheckTwo] = React.useState(false)
 
   return (
-    <StyledContainer>
-      <StyledWrap>
-        <StyledLight>
-          <BaseToggle 
-            options={optionsOne} 
-            check={checkOne} 
-            change={() => setCheckOne(!checkOne)} 
-          />
-        </StyledLight>
-        {/* <ul>
-          <li>Блог</li>
-          <li>Fishka</li>
-          <li>Вакансии</li>
-          <li>Магазины</li>
-          <li>Доставка и оплата</li>
-          <li>Кредит</li>
-          <li>Гарантия / Возврат</li>
-          <li>Контакты</li>
-        </ul> */}
-        <StyledLanguage>
+    <div className={classes.container}>
+      <div className={classes.wrap}>
+        <BaseToggle 
+          check={checkOne} 
+          leftComponent={intl.formatMessage({id: 'header.bright'})}
+          rightComponent={intl.formatMessage({id: 'header.dark'})}
+          change={() => setCheckOne(!checkOne)} 
+        />
+        <div>
           <BaseToggle
-            options={optionsTwo} 
+            leftComponent={'Рус'}
+            rightComponent={'Англ'}
             check={checkTwo}
             change={() => setCheckTwo(!checkTwo)} 
-          />
-        </StyledLanguage>
-        
-      </StyledWrap>
-    </StyledContainer>
+          /> 
+          <User />
+        </div>
+      </div>
+    </div>
   )
 }
 
-const StyledContainer = styled.div `
-  width: 100%;
-  background-color: ${BG_COLOR.bg_dark_light};
-
-  /* & ul {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: calc(${NUMBER.num1});
-
-    & li {
-      list-style-type: none;
-      font-size: calc(${SIZE.size1} + 2px);
-    }
-  } */
-`
-
-const StyledWrap = styled.div`
-  max-width: 1170px;
-  padding: calc(${NUMBER.num0} + 5px) calc(${NUMBER.num1} + 5px);
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-`
-
-const StyledLanguage = styled.div`
-  margin: 0 0 0 auto;
-`
-
-const StyledLight = styled.div`
-  margin-left: 25px;
-`
-
-export default HeaderLineOne
+export default injectIntl(HeaderLineOne)
