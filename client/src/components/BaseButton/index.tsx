@@ -1,29 +1,21 @@
 import React from 'react'
-import styled from 'styled-components'
-import {BG_COLOR, NUMBER, SIZE} from '../../helpers/cssVariables'
+import {Button} from '@material-ui/core'
 
-interface ButtonInterface {
-  click?(): void
+
+interface BaseButtonProps {
+  onClick?(): void,
+  color?: any
 }
-// need add styles === color, width, size
-const BaseButton:React.FC<ButtonInterface> = ({children, click}) => {
+
+const BaseButton:React.FC<BaseButtonProps> = (props) => {
+  const { onClick, color = 'primary', children } = props;
   return (
-    <StyledContainer onClick={click}>
+    <Button variant="contained" color={color} onClick={onClick}>
       {children}
-    </StyledContainer>
+    </Button>
   )
 }
 
-const StyledContainer = styled.button `
-  padding: calc(${NUMBER.num1}) calc(${NUMBER.num2});
-  border-radius: 5px;
-  background-color: ${BG_COLOR.red};
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: ${SIZE.size4};
-  cursor: pointer;
-`
+
 
 export default BaseButton

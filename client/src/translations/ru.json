@@ -1,10 +1,16 @@
 {
     "global": "",
+    "global.title": "MERN shop",
+
 
     "validation": "",
 
     "error": "",
 
     "header.bright": "Светлая",
-    "header.dark": "Тёмная"
+    "header.dark": "Тёмная",
+
+    "auth.login": "Login",
+    "auth.password": "Password",
+    "auth.repeatPassword": "Repeat password"
 }

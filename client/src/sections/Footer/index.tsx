@@ -1,13 +1,13 @@
 import React from 'react'
 import {NUMBER} from '../../helpers/cssVariables'
 import styled from 'styled-components'
-import { FooterTop, FooterBottom } from './components'
+import { FooterBottom } from './components'
 
 const Footer = () => {
   return (
     <StyledContainer>
       <StyledWrap>
-        <FooterTop />
+        {/* <FooterTop /> */}
         <FooterBottom />
       </StyledWrap>
     </StyledContainer>

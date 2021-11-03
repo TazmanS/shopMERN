@@ -1,3 +1,23 @@
 {
-    
+    "global": "",
+    "global.title": "MERN shop",
+
+
+    "validation": "",
+    "validation.login": "Please, enter login",
+    "validation.password": "Please, enter password",
+    "validation.email": "Please, enter email",
+    "validation.rePassword": "Passwords do not equal",
+
+    "error": "",
+
+    "header.bright": "Светлая",
+    "header.dark": "Тёмная",
+
+    "auth.login": "Login",
+    "auth.password": "Password",
+    "auth.repeatPassword": "Repeat password",
+    "auth.email": "Email",
+    "auth.registerNewAcc": "Registration new account",
+    "auth.registration": "Registration"
 }

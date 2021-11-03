@@ -1,59 +1,66 @@
 import React from 'react'
-import styled from 'styled-components'
-import {SIZE, COLOR} from '../../helpers/cssVariables'
+import { TextField } from '@material-ui/core';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { injectIntl } from 'react-intl';
 
-interface InputInterface {
-  options: {
-    value: string,
-    placeholder: string,
-    err: boolean,
-    errMessage: string
-  }
-  setValue(event:React.ChangeEvent<HTMLInputElement>): void,
-  minWidth?: number
+
+interface InputProps {
+  value: string,
+  placeholder: string,
+  setValue: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  intl: any,
+  
+  errorMessage?: string,
+  propClasses?: object,
+  icon?: React.Component,
+  label?: string,
+  clearError?: () => void
 }
 
-const BaseInput:React.FC<InputInterface> = ({options, setValue, minWidth}) => {
-  const {value, placeholder, err, errMessage} = options
+const BaseInput:React.FC<InputProps> = (props) => {
+  const { icon, placeholder, value, setValue, errorMessage, propClasses, label, intl, clearError } = props
+  const classes = useStyles() 
+
+  const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue && setValue(e)
+    clearError && clearError()
+  }
+
   return (
-    <StyledContainer>
-      <StyledTextField 
-        minWidth={minWidth}
-        value={value} 
-        onChange={setValue}
+    <div className={classes.container}>
+      <div className={classes.searchIcon}>
+        {icon}
+      </div>
+      <TextField 
+        placeholder={placeholder}
+        classes={propClasses}
+        inputProps={{ 'aria-label': 'search' }}
+        value={value}
+        error={!!errorMessage}
+        label={errorMessage ? intl.formatMessage({id: errorMessage}) : label || placeholder}
+        onChange={_onChange}
+        fullWidth={true}
       />
-      <StyledMiniPlaceholder value={value} error={err}>
-        {err ? errMessage : placeholder}
-      </StyledMiniPlaceholder>
-    </StyledContainer>
+    </div>
   )
 }
 
-const StyledContainer = styled.label`
-  position: relative;
-`
+const useStyles = makeStyles((theme: Theme) => 
+  createStyles({
+    container: {
 
-const StyledTextField = styled.input<{minWidth: Number | undefined}>`
-  padding: 15px 10px 10px 10px;
-  min-width: ${({ minWidth }) => minWidth ? minWidth + 'px' : '360px'};
-  border-radius: 5px;
-  margin: 5px;
-  font-size: ${SIZE.size2};
-  outline: none;
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 2),
+      height: '100%',
+      position: 'absolute',
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
-  :focus{
-    box-shadow: 0px 0px 10px ${COLOR.main};
-  }
-`
+  })
+)
 
-const StyledMiniPlaceholder = styled.span<{value: String, error: Boolean}>`
-  position: absolute;
-  top: ${({value}) => value.length > 0 ? '10px' : '23px' };
-  left: ${({value}) => value.length > 0 ? '15px' : '20px' };
-  font-size: ${({value}) => value.length > 0 ? SIZE.size1 : SIZE.size2 };
-  transition: all 0.2s;
-  color: ${({error}) => error ? COLOR.error : COLOR.main};
-  user-select: none;
-`
-
-export default BaseInput
+export default injectIntl(BaseInput)
